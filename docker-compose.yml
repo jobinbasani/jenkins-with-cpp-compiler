@@ -1,0 +1,24 @@
+version: "3.2"
+services:
+  ci-server:
+    image: jobinbasani/jenkins_with_cpp_compiler
+    container_name: "jenkins-with-docker"
+    ports:
+      - "8091:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    environment:
+      - DOCKER_HOST=tcp://socat:2375
+    links:
+      - socat
+    restart: always
+  socat:
+    image: bpack/socat
+    container_name: "gti-socat"
+    command: TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose:
+      - "2375"
+    restart: always
