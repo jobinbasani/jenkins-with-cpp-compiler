@@ -7,3 +7,5 @@ Refer to docker-compose.yml.
 To bring it up,
 
 `docker-compose up -d --build`
+
+Jenkins will be available at `http://localhost:8091/`
