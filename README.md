@@ -9,3 +9,5 @@ To bring it up,
 `docker-compose up -d --build`
 
 Jenkins will be available at `http://localhost:8091/`
+
+[View in Docker Hub](https://hub.docker.com/repository/docker/jobinbasani/jenkins_with_cpp_compiler)
